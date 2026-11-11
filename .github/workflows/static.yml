@@ -21,21 +21,21 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Descargar proyecto
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Preparar Node
         uses: actions/setup-node@v5
         with:
           node-version: 22
 
-      - name: Buscar y compilar juego
+      - name: Buscar proyecto y compilar
         run: |
           PROJECT_DIR=$(find . -name package.json -not -path '*/node_modules/*' -print -quit | xargs dirname)
-          echo "Proyecto encontrado en: $PROJECT_DIR"
-          echo "PROJECT_DIR=$PROJECT_DIR" >> $GITHUB_ENV
+          echo "Proyecto: $PROJECT_DIR"
           cd "$PROJECT_DIR"
           npm install
           npm run build
+          echo "PROJECT_DIR=$PROJECT_DIR" >> "$GITHUB_ENV"
 
       - name: Preparar publicación
         uses: actions/upload-pages-artifact@v3
