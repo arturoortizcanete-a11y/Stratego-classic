@@ -1,0 +1,8 @@
+{
+  "name": "Stratego Classic",
+  "short_name": "Stratego",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#17251f",
+  "theme_color": "#17251f"
+}
